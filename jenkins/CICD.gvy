@@ -34,17 +34,15 @@ pipeline {
             }			
         }
         stage('codecoverage') {
-
-	         steps {
-                // step4
-                echo 'codecoverage..'
-		            sh script: '/opt/maven/bin/mvn cobertura:cobertura -Dcobertura.report.format=xml'
-           }
-	         post {
+	   steps {
+                echo 'unittest..'
+	        sh script: '/opt/maven/bin/mvn verify'
+                 }
+	   post {
                success {
-	               cobertura autoUpdateHealth: false, autoUpdateStability: false, coberturaReportFile: 'target/site/cobertura/coverage.xml', conditionalCoverageTargets: '70, 0, 0', failUnhealthy: false, failUnstable: false, lineCoverageTargets: '80, 0, 0', maxNumberOfBuilds: 0, methodCoverageTargets: '80, 0, 0', onlyStable: false, sourceEncoding: 'ASCII', zoomCoverageChart: false                  
+                   jacoco buildOverBuild: true, deltaBranchCoverage: '20', deltaClassCoverage: '20', deltaComplexityCoverage: '20', deltaInstructionCoverage: '20', deltaLineCoverage: '20', deltaMethodCoverage: '20'
                }
-           }		
+           }			
         }
         stage('package/build-war') {
 	         steps {
