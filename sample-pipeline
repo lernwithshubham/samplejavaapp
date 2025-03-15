@@ -1,0 +1,51 @@
+
+
+
+
+
+pipeline {
+ agent none
+ tools {
+   maven 'mvn3.9.6'
+   jdk 'java17'
+ }
+
+ triggers {
+   pollSCM '* * * * *'
+ }
+    stages {
+  stage('Compile') {
+    steps {
+      // One or more steps need to be included within the steps block.
+    }
+
+    post {
+      always {
+        // One or more steps need to be included within each condition's block.
+      }
+    }
+  }
+
+  stage('unittest') {
+    steps {
+      // One or more steps need to be included within the steps block.
+    }
+
+    post {
+      always {
+        // One or more steps need to be included within each condition's block.
+      }
+    }
+  }
+
+  stage('package') {
+    steps {
+      // One or more steps need to be included within the steps block.
+    }
+  }
+
+}
+
+
+
+}
