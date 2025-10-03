@@ -46,13 +46,7 @@ pipeline {
             post {
                 success {
                     archiveArtifacts artifacts: 'target/*.war', followSymlinks: false
-                    mail(
-                        to: 'abc@gmail.com',
-                        subject: "${env.JOB_NAME} - Build #${env.BUILD_NUMBER} - ${currentBuild.currentResult}",
-                        body: """${env.JOB_NAME} - Build #${env.BUILD_NUMBER} - ${currentBuild.currentResult}
-
-                        Check console output at ${env.BUILD_URL} to view the results."""
-                    )
+                    mail bcc: '', body: 'test', cc: '', from: '', replyTo: '', subject: "${env.JOB_NAME} - Build #${env.BUILD_NUMBER} - ${currentBuild.currentResult}", to: 'shubh.sharma081992@gmail.com'
                 }
             }
         }
