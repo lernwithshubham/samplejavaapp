@@ -46,7 +46,9 @@ pipeline {
             post {
                 success {
                     archiveArtifacts artifacts: 'target/*.war', followSymlinks: false
-                    mail bcc: '', body: 'test', cc: '', from: '', replyTo: '', subject: 'test', to: 'shubh.sharma081992@gmail.com'
+                    mail bcc: '', body: '''$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS:
+
+Check console output at $BUILD_URL to view the results.''', cc: '', from: '', replyTo: '', subject: '$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!', to: 'shubh.sharma081992@gmail.com'
                 }
             }
         }
