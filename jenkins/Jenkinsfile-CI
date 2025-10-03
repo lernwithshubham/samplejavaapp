@@ -47,6 +47,7 @@ pipeline {
                 success {
                     archiveArtifacts artifacts: 'target/*.war', followSymlinks: false
                     emailext body: 'test', subject: 'test', to: 'shubh.sharma081992@gmail.com'
+                    mail bcc: '', body: 'test', cc: '', from: '', replyTo: '', subject: 'test', to: 'shubh.sharma081992@gmail.com'
                 }
             }
         }
