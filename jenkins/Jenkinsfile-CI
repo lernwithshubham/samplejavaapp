@@ -47,7 +47,8 @@ pipeline {
                 success {
                     archiveArtifacts artifacts: 'target/*.war', followSymlinks: false
                     mail bcc: '', body: """
-Check console output at ${env.BUILD_URL} to view the results.""", cc: '', from: '', replyTo: '', subject: "${env.JOB_NAME} - Build #${env.BUILD_NUMBER} - ${currentBuild.currentResult}", to: 'shubh.sharma081992@gmail.com'
+Check console output at ${env.BUILD_URL} to view the results.
+Thank you, Keep using Jenkins..!! """, cc: '', from: '', replyTo: '', subject: "${env.JOB_NAME} - Build #${env.BUILD_NUMBER} - ${currentBuild.currentResult}", to: 'shubh.sharma081992@gmail.com'
                 }
             }
         }
